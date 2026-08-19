@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EduZone - Learn smarter, practice better and track your progress.">
+
+    <title>EduZone | Learn Smarter</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        EduZone 📚
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="math.html">
+            Math
+        </a>
+
+        <a href="physics.html">
+            Physics
+        </a>
+
+        <a href="chemistry.html">
+            Chemistry
+        </a>
+
+        <a href="biology.html">
+            Biology
+        </a>
+
+        <a href="quiz.html">
+            Quiz
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            🎓 YOUR DIGITAL CLASSROOM
+        </p>
+
+
+        <h1>
+            Learn smarter.<br>
+            Score higher.
+        </h1>
+
+
+        <p class="hero-text">
+
+            Master Mathematics, Physics,
+            Chemistry and Biology with
+            simple lessons and interactive quizzes.
+
+        </p>
+
+
+        <div
+            style="
+                display:flex;
+                gap:12px;
+                justify-content:center;
+                flex-wrap:wrap;
+                margin-top:28px;
+            ">
+
+
+            <a href="math.html">
+
+                <button class="primary-btn">
+                    Start Learning 🚀
+                </button>
+
+            </a>
+
+
+            <a href="quiz.html">
+
+                <button
+                    class="primary-btn"
+                    style="
+                        background:#ffffff;
+                        color:#315efb;
+                        border:1px solid #d5ddff;
+                    ">
+
+                    Take a Quiz 🧠
+
+                </button>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<section class="subjects">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            FIND A LESSON
+        </p>
+
+
+        <h2>
+            What do you want to learn?
+        </h2>
+
+
+        <p>
+            Search for a topic and jump straight into a lesson.
+        </p>
+
+    </div>
+
+
+    <div
+        style="
+            width:min(850px,100%);
+            margin:auto;
+            text-align:center;
+        ">
+
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Search Algebra, Genetics, Electricity..."
+            autocomplete="off">
+
+
+        <button onclick="searchLessons()">
+
+            Search 🔎
+
+        </button>
+
+
+        <div
+            id="searchResults"
+            style="margin-top:25px;">
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SUBJECTS
+========================= -->
+
+<section class="subjects">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            EXPLORE
+        </p>
+
+
+        <h2>
+            Choose Your Subject
+        </h2>
+
+
+        <p>
+            Start with a subject and build your knowledge.
+        </p>
+
+    </div>
+
+
+
+    <div class="subject-container">
+
+
+        <!-- MATHEMATICS -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🔢
+            </div>
+
+
+            <h3>
+                Mathematics
+            </h3>
+
+
+            <p>
+                Algebra, geometry, statistics
+                and trigonometry.
+            </p>
+
+
+            <a href="math.html">
+
+                <button>
+                    Explore Math →
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- PHYSICS -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                ⚡
+            </div>
+
+
+            <h3>
+                Physics
+            </h3>
+
+
+            <p>
+                Mechanics, waves, electricity
+                and more.
+            </p>
+
+
+            <a href="physics.html">
+
+                <button>
+                    Explore Physics →
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- CHEMISTRY -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧪
+            </div>
+
+
+            <h3>
+                Chemistry
+            </h3>
+
+
+            <p>
+                Atoms, organic chemistry
+                and electrochemistry.
+            </p>
+
+
+            <a href="chemistry.html">
+
+                <button>
+                    Explore Chemistry →
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- BIOLOGY -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧬
+            </div>
+
+
+            <h3>
+                Biology
+            </h3>
+
+
+            <p>
+                Cells, genetics, ecology
+                and human biology.
+            </p>
+
+
+            <a href="biology.html">
+
+                <button>
+                    Explore Biology →
+                </button>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY EDUZONE
+========================= -->
+
+<section class="subjects">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            WHY EDUZONE?
+        </p>
+
+
+        <h2>
+            Everything you need to learn better.
+        </h2>
+
+    </div>
+
+
+
+    <div class="subject-container">
+
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                📖
+            </div>
+
+            <h3>
+                Simple Lessons
+            </h3>
+
+            <p>
+                Complicated topics are broken
+                down into easier explanations.
+            </p>
+
+        </div>
+
+
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧠
+            </div>
+
+            <h3>
+                Interactive Quizzes
+            </h3>
+
+            <p>
+                Test yourself and discover
+                what you actually remember.
+            </p>
+
+        </div>
+
+
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                📊
+            </div>
+
+            <h3>
+                Track Progress
+            </h3>
+
+            <p>
+                See your completed lessons
+                and quiz performance.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     QUIZ CTA
+========================= -->
+
+<section class="cta-section">
+
+    <p class="section-label">
+        READY FOR A CHALLENGE?
+    </p>
+
+
+    <h2>
+        Think you know your stuff? 👀
+    </h2>
+
+
+    <p>
+        Take the EduZone quiz and see how high you can score.
+    </p>
+
+
+    <a href="quiz.html">
+
+        <button class="primary-btn">
+
+            Challenge Yourself 🧠 →
+
+        </button>
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            EduZone 📚
+        </h2>
+
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+
+        <p class="copyright">
+            © 2026 EduZone. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- SEARCH SCRIPT -->
+
+<script src="search.js"></script>
+
+
+</body>
+
+</html>

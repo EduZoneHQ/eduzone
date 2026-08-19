@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EduZone interactive quiz">
+
+    <title>Quiz | EduZone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        EduZone 📚
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="math.html">Math</a>
+
+        <a href="physics.html">Physics</a>
+
+        <a href="chemistry.html">Chemistry</a>
+
+        <a href="biology.html">Biology</a>
+
+        <a href="quiz.html">Quiz</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            🧠 ED UZONE QUIZ
+        </p>
+
+        <h1>
+            Test Your Knowledge.
+        </h1>
+
+        <p class="hero-text">
+            Challenge yourself across Mathematics,
+            Physics, Chemistry and Biology.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section class="lesson">
+
+
+    <div id="quiz">
+
+        <div id="quizStart">
+
+            <h2>
+                Ready? 👀
+            </h2>
+
+            <p>
+                You will get 10 random questions.
+            </p>
+
+            <p>
+                You have 60 seconds.
+            </p>
+
+            <br>
+
+            <button onclick="startQuiz()">
+                Start Quiz 🚀
+            </button>
+
+        </div>
+
+
+        <div id="quizGame" style="display:none;">
+
+            <p>
+                Question
+                <strong id="questionNumber">
+                    1
+                </strong>
+                / 10
+            </p>
+
+            <br>
+
+            <h2 id="question">
+                Loading...
+            </h2>
+
+            <br>
+
+            <div id="answers"></div>
+
+            <p>
+                ⏱️ Time:
+                <strong id="timer">
+                    60
+                </strong>
+                seconds
+            </p>
+
+            <p id="quizFeedback"></p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            EduZone 📚
+        </h2>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p class="copyright">
+            © 2026 EduZone. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   QUESTION BANK
+========================= */
+
+const questionBank = [
+
+    {
+        question: "What is x if x + 5 = 12?",
+        answers: ["5", "7", "10", "17"],
+        correct: "7"
+    },
+
+    {
+        question: "What is the area of a rectangle measuring 6 m by 5 m?",
+        answers: ["11 m²", "25 m²", "30 m²", "35 m²"],
+        correct: "30 m²"
+    },
+
+    {
+        question: "What is the mean of 5, 10 and 15?",
+        answers: ["5", "10", "15", "30"],
+        correct: "10"
+    },
+
+    {
+        question: "Which trigonometric ratio is Opposite ÷ Hypotenuse?",
+        answers: ["sin", "cos", "tan", "sec"],
+        correct: "sin"
+    },
+
+    {
+        question: "What is the SI unit of frequency?",
+        answers: ["Metre", "Newton", "Hertz", "Joule"],
+        correct: "Hertz"
+    },
+
+    {
+        question: "What is the formula for speed?",
+        answers: [
+            "Time ÷ Distance",
+            "Distance ÷ Time",
+            "Distance × Time",
+            "Mass ÷ Time"
+        ],
+        correct: "Distance ÷ Time"
+    },
+
+    {
+        question: "What is the SI unit of force?",
+        answers: [
+            "Joule",
+            "Watt",
+            "Newton",
+            "Pascal"
+        ],
+        correct: "Newton"
+    },
+
+    {
+        question: "Which particle has a negative charge?",
+        answers: [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Nucleus"
+        ],
+        correct: "Electron"
+    },
+
+    {
+        question: "What is Ohm's law?",
+        answers: [
+            "V = IR",
+            "P = IV",
+            "F = ma",
+            "E = mc²"
+        ],
+        correct: "V = IR"
+    },
+
+    {
+        question: "What is the central element in organic chemistry?",
+        answers: [
+            "Oxygen",
+            "Carbon",
+            "Sodium",
+            "Iron"
+        ],
+        correct: "Carbon"
+    },
+
+    {
+        question: "Which particle has no electrical charge?",
+        answers: [
+            "Electron",
+            "Proton",
+            "Neutron",
+            "Ion"
+        ],
+        correct: "Neutron"
+    },
+
+    {
+        question: "What process uses electrical energy to drive a chemical reaction?",
+        answers: [
+            "Combustion",
+            "Electrolysis",
+            "Filtration",
+            "Distillation"
+        ],
+        correct: "Electrolysis"
+    },
+
+    {
+        question: "What is the basic unit of life?",
+        answers: [
+            "Tissue",
+            "Organ",
+            "Cell",
+            "Organ system"
+        ],
+        correct: "Cell"
+    },
+
+    {
+        question: "Which molecule carries genetic information?",
+        answers: [
+            "Water",
+            "DNA",
+            "Glucose",
+            "Oxygen"
+        ],
+        correct: "DNA"
+    },
+
+    {
+        question: "Which organism is usually a producer?",
+        answers: [
+            "Lion",
+            "Frog",
+            "Plant",
+            "Snake"
+        ],
+        correct: "Plant"
+    },
+
+    {
+        question: "Which organ pumps blood around the human body?",
+        answers: [
+            "Lung",
+            "Kidney",
+            "Heart",
+            "Stomach"
+        ],
+        correct: "Heart"
+    },
+
+    {
+        question: "Which gas do humans normally inhale for respiration?",
+        answers: [
+            "Carbon dioxide",
+            "Oxygen",
+            "Hydrogen",
+            "Nitrogen"
+        ],
+        correct: "Oxygen"
+    },
+
+    {
+        question: "Which formula represents kinetic energy?",
+        answers: [
+            "mv",
+            "½mv²",
+            "mgh",
+            "F = ma"
+        ],
+        correct: "½mv²"
+    },
+
+    {
+        question: "What is the chemical formula of water?",
+        answers: [
+            "CO₂",
+            "H₂O",
+            "O₂",
+            "NaCl"
+        ],
+        correct: "H₂O"
+    },
+
+    {
+        question: "How many chromosomes are normally found in a human body cell?",
+        answers: [
+            "23",
+            "46",
+            "44",
+            "92"
+        ],
+        correct: "46"
+    },
+
+    {
+        question: "What is acceleration?",
+        answers: [
+            "Distance travelled",
+            "Rate of change of velocity",
+            "Mass × velocity",
+            "Force ÷ distance"
+        ],
+        correct: "Rate of change of velocity"
+    },
+
+    {
+        question: "Which organelle is commonly called the powerhouse of the cell?",
+        answers: [
+            "Nucleus",
+            "Ribosome",
+            "Mitochondrion",
+            "Vacuole"
+        ],
+        correct: "Mitochondrion"
+    },
+
+    {
+        question: "What is the pH of a neutral solution at 25°C?",
+        answers: [
+            "0",
+            "5",
+            "7",
+            "14"
+        ],
+        correct: "7"
+    },
+
+    {
+        question: "Which type of wave can travel through a vacuum?",
+        answers: [
+            "Sound",
+            "Water",
+            "Electromagnetic",
+            "Mechanical"
+        ],
+        correct: "Electromagnetic"
+    }
+
+];
+
+
+
+/* =========================
+   QUIZ VARIABLES
+========================= */
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let timeLeft = 60;
+
+let timerInterval = null;
+
+let answered = false;
+
+
+
+/* =========================
+   SHUFFLE
+========================= */
+
+function shuffle(array) {
+
+    const copy = [...array];
+
+    for (
+        let i = copy.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [
+            copy[i],
+            copy[j]
+        ] =
+        [
+            copy[j],
+            copy[i]
+        ];
+
+    }
+
+    return copy;
+}
+
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz() {
+
+    questions =
+        shuffle(questionBank)
+            .slice(0, 10);
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    timeLeft = 60;
+
+    answered = false;
+
+
+    document.getElementById("quizStart").style.display =
+        "none";
+
+
+    document.getElementById("quizGame").style.display =
+        "block";
+
+
+    document.getElementById("timer").textContent =
+        timeLeft;
+
+
+    clearInterval(timerInterval);
+
+
+    timerInterval =
+        setInterval(updateTimer, 1000);
+
+
+    showQuestion();
+
+}
+
+
+
+/* =========================
+   TIMER
+========================= */
+
+function updateTimer() {
+
+    timeLeft--;
+
+    document.getElementById("timer").textContent =
+        timeLeft;
+
+
+    if (timeLeft <= 0) {
+
+        clearInterval(timerInterval);
+
+        finishQuiz();
+
+    }
+
+}
+
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuestion() {
+
+    answered = false;
+
+
+    const question =
+        questions[currentQuestion];
+
+
+    document.getElementById("questionNumber").textContent =
+        currentQuestion + 1;
+
+
+    document.getElementById("question").textContent =
+        question.question;
+
+
+    document.getElementById("quizFeedback").textContent =
+        "";
+
+
+    const answers =
+        document.getElementById("answers");
+
+
+    answers.innerHTML = "";
+
+
+    const shuffledAnswers =
+        shuffle(question.answers);
+
+
+    shuffledAnswers.forEach(answer => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.textContent =
+            answer;
+
+
+        button.onclick =
+            () => selectAnswer(answer, button);
+
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+
+/* =========================
+   SELECT ANSWER
+========================= */
+
+function selectAnswer(answer, button) {
+
+    if (answered) {
+        return;
+    }
+
+
+    answered = true;
+
+
+    const correct =
+        questions[currentQuestion].correct;
+
+
+    const allButtons =
+        document.querySelectorAll("#answers button");
+
+
+    allButtons.forEach(btn => {
+
+        btn.disabled = true;
+
+    });
+
+
+    if (answer === correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        document.getElementById("quizFeedback").textContent =
+            "✅ Correct!";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        document.getElementById("quizFeedback").textContent =
+            `❌ Incorrect. The correct answer is ${correct}.`;
+
+
+        allButtons.forEach(btn => {
+
+            if (btn.textContent === correct) {
+
+                btn.classList.add("correct");
+
+            }
+
+        });
+
+    }
+
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+
+        if (currentQuestion >= questions.length) {
+
+            finishQuiz();
+
+        } else {
+
+            showQuestion();
+
+        }
+
+    }, 900);
+
+}
+
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+function finishQuiz() {
+
+    clearInterval(timerInterval);
+
+
+    localStorage.setItem(
+        "quizScore",
+        score
+    );
+
+
+    localStorage.setItem(
+        "quizTotal",
+        questions.length
+    );
+
+
+    const previousBest =
+        Number(
+            localStorage.getItem("bestQuizScore") || 0
+        );
+
+
+    if (score > previousBest) {
+
+        localStorage.setItem(
+            "bestQuizScore",
+            score
+        );
+
+    }
+
+
+    const percentage =
+        Math.round(
+            (score / questions.length) * 100
+        );
+
+
+    let message;
+
+
+    if (percentage >= 80) {
+
+        message =
+            "🔥 Excellent work!";
+
+    } else if (percentage >= 60) {
+
+        message =
+            "👏 Good job!";
+
+    } else if (percentage >= 40) {
+
+        message =
+            "📚 Keep practicing!";
+
+    } else {
+
+        message =
+            "💪 Don't give up. Try again!";
+
+    }
+
+
+    document.getElementById("quizGame").innerHTML = `
+
+        <h2>
+            🎉 Quiz Complete!
+        </h2>
+
+        <br>
+
+        <p>
+            You scored
+            <strong>${score}/${questions.length}</strong>
+        </p>
+
+        <p>
+            ${percentage}%
+        </p>
+
+        <br>
+
+        <h3>
+            ${message}
+        </h3>
+
+        <br>
+
+        <button onclick="location.reload()">
+            Try Again 🔄
+        </button>
+
+        <br><br>
+
+        <a href="dashboard.html">
+
+            <button>
+                View Dashboard 📊
+            </button>
+
+        </a>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

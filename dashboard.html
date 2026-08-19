@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EduZone student dashboard">
+
+    <title>Dashboard | EduZone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        EduZone 📚
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="math.html">
+            Math
+        </a>
+
+        <a href="physics.html">
+            Physics
+        </a>
+
+        <a href="chemistry.html">
+            Chemistry
+        </a>
+
+        <a href="biology.html">
+            Biology
+        </a>
+
+        <a href="quiz.html">
+            Quiz
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            📊 DASHBOARD
+        </p>
+
+        <h1>
+            Your Learning Progress.
+        </h1>
+
+        <p class="hero-text">
+            Keep track of your lessons and quiz performance.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section class="subjects">
+
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            YOUR STATS
+        </p>
+
+        <h2>
+            Keep Going 🚀
+        </h2>
+
+    </div>
+
+
+
+    <div class="subject-container">
+
+
+        <!-- LESSONS COMPLETED -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                📚
+            </div>
+
+            <h3>
+                Lessons Completed
+            </h3>
+
+            <p id="lessonsCompleted">
+                0
+            </p>
+
+        </div>
+
+
+
+        <!-- LAST QUIZ -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧠
+            </div>
+
+            <h3>
+                Last Quiz Score
+            </h3>
+
+            <p id="quizScore">
+                No quiz taken yet
+            </p>
+
+        </div>
+
+
+
+        <!-- BEST QUIZ -->
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🏆
+            </div>
+
+            <h3>
+                Best Quiz Score
+            </h3>
+
+            <p id="bestScore">
+                No score yet
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section class="lesson">
+
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            QUICK ACTIONS
+        </p>
+
+        <h2>
+            Keep Learning
+        </h2>
+
+    </div>
+
+
+
+    <div class="subject-container">
+
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                📖
+            </div>
+
+            <h3>
+                Browse Lessons
+            </h3>
+
+            <p>
+                Continue learning from any subject.
+            </p>
+
+            <a href="index.html">
+
+                <button>
+                    Browse Lessons →
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧠
+            </div>
+
+            <h3>
+                Take a Quiz
+            </h3>
+
+            <p>
+                Test what you've learned.
+            </p>
+
+            <a href="quiz.html">
+
+                <button>
+                    Take Quiz →
+                </button>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section class="cta-section">
+
+    <p class="section-label">
+        EDUZONE
+    </p>
+
+    <h2>
+        Consistency beats cramming. 💯
+    </h2>
+
+    <p>
+        Learn something new every day.
+    </p>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            EduZone 📚
+        </h2>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p class="copyright">
+            © 2026 EduZone. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   LESSONS COMPLETED
+========================= */
+
+const lessonsCompleted =
+    Number(
+        localStorage.getItem("lessonsCompleted") || 0
+    );
+
+
+document.getElementById(
+    "lessonsCompleted"
+).textContent =
+    lessonsCompleted;
+
+
+
+/* =========================
+   LAST QUIZ SCORE
+========================= */
+
+const quizScore =
+    localStorage.getItem("quizScore");
+
+const quizTotal =
+    localStorage.getItem("quizTotal");
+
+
+if (quizScore !== null && quizTotal !== null) {
+
+    document.getElementById(
+        "quizScore"
+    ).textContent =
+        `${quizScore}/${quizTotal}`;
+
+}
+
+
+
+/* =========================
+   BEST QUIZ SCORE
+========================= */
+
+const bestScore =
+    localStorage.getItem("bestQuizScore");
+
+
+if (bestScore !== null) {
+
+    document.getElementById(
+        "bestScore"
+    ).textContent =
+        `${bestScore}/10`;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

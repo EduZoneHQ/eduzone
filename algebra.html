@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Algebra - EduZone</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h2>EduZone 📚</h2>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="math.html">Mathematics</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <h1>Algebra 🔢</h1>
+
+            <p>
+                Learn the basics of algebra step by step.
+            </p>
+
+        </section>
+
+
+        <section class="lesson">
+
+            <h2>What is Algebra?</h2>
+
+            <p>
+                Algebra is a branch of mathematics that uses letters
+                and symbols to represent unknown values.
+            </p>
+
+
+            <h2>Example</h2>
+
+            <p>
+                Consider the equation:
+            </p>
+
+            <div class="example">
+                x + 5 = 12
+            </div>
+
+            <p>
+                We want to find the value of x.
+            </p>
+
+            <p>
+                Subtract 5 from both sides:
+            </p>
+
+            <div class="example">
+                x = 12 - 5
+            </div>
+
+            <p>
+                Therefore:
+            </p>
+
+            <div class="example">
+                x = 7
+            </div>
+
+
+            <h2>🎯 Your Turn</h2>
+
+            <p>
+                Solve the following equation:
+            </p>
+
+            <div class="question">
+                <h3>x + 8 = 15</h3>
+
+                <button onclick="checkAnswer(7)">
+                    Answer: 7
+                </button>
+
+                <button onclick="checkAnswer(10)">
+                    Answer: 10
+                </button>
+
+                <button onclick="checkAnswer(5)">
+                    Answer: 5
+                </button>
+
+            </div>
+
+            <p id="result"></p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>© 2026 EduZone. Learn. Practice. Improve.</p>
+
+    </footer>
+
+
+    <script>
+
+        function checkAnswer(answer) {
+
+            const result = document.getElementById("result");
+
+            if (answer === 7) {
+                result.textContent = "✅ Correct! Great job.";
+            } else {
+                result.textContent = "❌ Not quite. Try again!";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
