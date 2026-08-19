@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/math.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/physics.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/chemistry.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/biology.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/jamb.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/jamb-chemistry.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/jamb-chemistry-quiz.html</loc>
+    </url>
+
+    <url>
+        <loc>https://eduzonehq.github.io/eduzone/jamb-mock.html</loc>
+    </url>
+
+</urlset>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eduzonehq.github.io/eduzone/sitemap.xml
