@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JAMB Chemistry Quiz | EduZone</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        EduZone 📚
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="jamb.html">JAMB</a>
+        <a href="math.html">Math</a>
+        <a href="physics.html">Physics</a>
+        <a href="chemistry.html">Chemistry</a>
+        <a href="biology.html">Biology</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            🧪 JAMB CHEMISTRY
+        </p>
+
+        <h1>
+            Chemistry Practice
+        </h1>
+
+        <p class="hero-text">
+            Answer the questions and see your score.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="lesson">
+
+    <div id="quiz">
+
+        <div id="quizGame">
+
+            <p id="progress"></p>
+
+            <h2 id="question">
+                Loading question...
+            </h2>
+
+            <div id="answers"></div>
+
+            <p id="feedback"></p>
+
+            <button
+                id="nextButton"
+                style="display:none;">
+                Next Question →
+            </button>
+
+        </div>
+
+
+        <div
+            id="finalScore"
+            style="display:none; text-align:center;">
+
+            <h2>
+                Quiz Complete 🎉
+            </h2>
+
+            <p id="scoreText"></p>
+
+            <br>
+
+            <button onclick="location.reload()">
+                Try Again
+            </button>
+
+            <br><br>
+
+            <a href="jamb.html">
+                <button>
+                    Back to JAMB →
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            EduZone 📚
+        </h2>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p class="copyright">
+            © 2026 EduZone. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const questions = [
+
+    {
+        question: "Which particle has a negative charge?",
+        answers: [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Nucleus"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "What is the chemical symbol for sodium?",
+        answers: [
+            "So",
+            "Na",
+            "S",
+            "Sd"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Which of the following is an alkane?",
+        answers: [
+            "Ethene",
+            "Ethyne",
+            "Ethane",
+            "Ethanol"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "What is the pH of a neutral solution at 25°C?",
+        answers: [
+            "0",
+            "5",
+            "7",
+            "14"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "Which gas is produced at the cathode during electrolysis of dilute sodium chloride solution?",
+        answers: [
+            "Chlorine",
+            "Hydrogen",
+            "Oxygen",
+            "Nitrogen"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "What is the molecular formula of methane?",
+        answers: [
+            "CH₂",
+            "CH₃",
+            "CH₄",
+            "C₂H₆"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "Which of these is a strong acid?",
+        answers: [
+            "HCl",
+            "CH₃COOH",
+            "H₂O",
+            "NH₃"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "How many moles are present in 18 g of water? (H₂O = 18 g/mol)",
+        answers: [
+            "0.5 mol",
+            "1 mol",
+            "2 mol",
+            "18 mol"
+        ],
+        correct: 1
+    }
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+const questionElement =
+    document.getElementById("question");
+
+const answersElement =
+    document.getElementById("answers");
+
+const feedbackElement =
+    document.getElementById("feedback");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const progressElement =
+    document.getElementById("progress");
+
+const quizGame =
+    document.getElementById("quizGame");
+
+const finalScore =
+    document.getElementById("finalScore");
+
+const scoreText =
+    document.getElementById("scoreText");
+
+
+function loadQuestion() {
+
+    answered = false;
+
+    feedbackElement.textContent = "";
+
+    nextButton.style.display = "none";
+
+    const question =
+        questions[currentQuestion];
+
+    progressElement.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    questionElement.textContent =
+        question.question;
+
+    answersElement.innerHTML = "";
+
+
+    question.answers.forEach(
+        (answer, index) => {
+
+            const button =
+                document.createElement("button");
+
+            button.textContent =
+                `${String.fromCharCode(65 + index)}. ${answer}`;
+
+            button.onclick =
+                () => checkAnswer(index);
+
+            answersElement.appendChild(button);
+
+        }
+    );
+
+}
+
+
+function checkAnswer(selected) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const correct =
+        questions[currentQuestion].correct;
+
+    const buttons =
+        answersElement.querySelectorAll("button");
+
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+
+    if (selected === correct) {
+
+        score++;
+
+        feedbackElement.textContent =
+            "✅ Correct!";
+
+    } else {
+
+        feedbackElement.textContent =
+            `❌ Incorrect. Correct answer: ${
+                questions[currentQuestion].answers[correct]
+            }`;
+
+    }
+
+
+    nextButton.style.display =
+        "inline-block";
+
+}
+
+
+nextButton.onclick = function() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showFinalScore();
+
+    }
+
+};
+
+
+function showFinalScore() {
+
+    quizGame.style.display = "none";
+
+    finalScore.style.display = "block";
+
+    scoreText.textContent =
+        `You scored ${score} out of ${questions.length}.`;
+
+    localStorage.setItem(
+        "jambChemistryScore",
+        score
+    );
+
+}
+
+
+loadQuestion();
+
+</script>
+
+</body>
+
+</html>
