@@ -1,0 +1,10 @@
+{
+  "name": "EduZone",
+  "short_name": "EduZone",
+  "description": "Learn, practice and prepare for JAMB.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": []
+}
