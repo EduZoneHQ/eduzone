@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EduZone student account">
+
+    <title>Account | EduZone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYP08L235S"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-RYP08L235S');
+    </script>
+
+    <style>
+
+        .account-container {
+            width: min(450px, 90%);
+            margin: 60px auto;
+        }
+
+        .account-box {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .account-box h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .account-box > p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .account-box input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .account-box button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .switch button {
+            background: none;
+            color: #315efb;
+            padding: 0;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #profile {
+            display: none;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        EduZone 📚
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="jamb.html">JAMB</a>
+        <a href="math.html">Math</a>
+        <a href="physics.html">Physics</a>
+        <a href="chemistry.html">Chemistry</a>
+        <a href="biology.html">Biology</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="account.html">Account</a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <div class="account-container">
+
+        <!-- LOGIN / SIGN UP -->
+
+        <div class="account-box" id="accountBox">
+
+            <h1 id="title">
+                Create Your Account 👤
+            </h1>
+
+            <p id="subtitle">
+                Join EduZone and start learning.
+            </p>
+
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Username">
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email address">
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password">
+
+
+            <button
+                class="primary-btn"
+                onclick="createAccount()"
+                id="mainButton">
+
+                Create Account 🚀
+
+            </button>
+
+
+            <div class="switch">
+
+                <p id="switchText">
+                    Already have an account?
+                </p>
+
+                <button
+                    onclick="switchMode()"
+                    id="switchButton">
+
+                    Login
+
+                </button>
+
+            </div>
+
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div class="account-box" id="profile">
+
+            <h1>
+                Welcome back! 👋
+            </h1>
+
+            <p>
+                You're logged in as:
+            </p>
+
+            <h2 id="profileUsername"></h2>
+
+            <p id="profileEmail"></p>
+
+
+            <button
+                class="primary-btn"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            EduZone 📚
+        </h2>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p class="copyright">
+            © 2026 EduZone. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+let loginMode = false;
+
+
+/* CHECK IF USER IS ALREADY LOGGED IN */
+
+window.onload = function() {
+
+    const loggedIn = localStorage.getItem("eduzoneLoggedIn");
+
+    if (loggedIn === "true") {
+        showProfile();
+    }
+
+};
+
+
+/* SWITCH LOGIN / SIGN UP */
+
+function switchMode() {
+
+    loginMode = !loginMode;
+
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const button = document.getElementById("mainButton");
+    const switchText = document.getElementById("switchText");
+    const switchButton = document.getElementById("switchButton");
+    const username = document.getElementById("username");
+
+    document.getElementById("message").textContent = "";
+
+    if (loginMode) {
+
+        title.textContent = "Welcome Back 👋";
+
+        subtitle.textContent =
+            "Login to continue learning.";
+
+        button.textContent =
+            "Login 🚀";
+
+        switchText.textContent =
+            "Don't have an account?";
+
+        switchButton.textContent =
+            "Sign Up";
+
+        username.style.display =
+            "none";
+
+    } else {
+
+        title.textContent =
+            "Create Your Account 👤";
+
+        subtitle.textContent =
+            "Join EduZone and start learning.";
+
+        button.textContent =
+            "Create Account 🚀";
+
+        switchText.textContent =
+            "Already have an account?";
+
+        switchButton.textContent =
+            "Login";
+
+        username.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* CREATE ACCOUNT OR LOGIN */
+
+function createAccount() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+
+    if (loginMode) {
+
+        const savedEmail =
+            localStorage.getItem("eduzoneEmail");
+
+        const savedPassword =
+            localStorage.getItem("eduzonePassword");
+
+
+        if (
+            email === savedEmail &&
+            password === savedPassword
+        ) {
+
+            localStorage.setItem(
+                "eduzoneLoggedIn",
+                "true"
+            );
+
+            showProfile();
+
+        } else {
+
+            message.textContent =
+                "Incorrect email or password ❌";
+
+        }
+
+        return;
+
+    }
+
+
+    if (!username || !email || !password) {
+
+        message.textContent =
+            "Please fill in everything ❌";
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "eduzoneUsername",
+        username
+    );
+
+    localStorage.setItem(
+        "eduzoneEmail",
+        email
+    );
+
+    localStorage.setItem(
+        "eduzonePassword",
+        password
+    );
+
+    localStorage.setItem(
+        "eduzoneLoggedIn",
+        "true"
+    );
+
+
+    showProfile();
+
+}
+
+
+/* SHOW PROFILE */
+
+function showProfile() {
+
+    document.getElementById("accountBox")
+        .style.display = "none";
+
+    document.getElementById("profile")
+        .style.display = "block";
+
+
+    document.getElementById("profileUsername")
+        .textContent =
+        localStorage.getItem("eduzoneUsername");
+
+
+    document.getElementById("profileEmail")
+        .textContent =
+        localStorage.getItem("eduzoneEmail");
+
+}
+
+
+/* LOGOUT */
+
+function logout() {
+
+    localStorage.setItem(
+        "eduzoneLoggedIn",
+        "false"
+    );
+
+    document.getElementById("profile")
+        .style.display = "none";
+
+    document.getElementById("accountBox")
+        .style.display = "block";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
