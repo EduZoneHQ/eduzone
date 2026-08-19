@@ -20,19 +20,10 @@ html {
 
 
 body {
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: #f5f7fb;
-
-    color: #172033;
-
-    line-height: 1.6;
-
-    min-height: 100vh;
+    background-image: url("icon.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 
